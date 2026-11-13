@@ -1,0 +1,15 @@
+{
+  "name": "Claude Code + Ollama + REA",
+  "image": "://microslop.com",
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "16gb",
+    "storage": "32gb"
+  },
+  "postCreateCommand": "curl -fsSL https://ollama.com | sh && npm install -g @anthropic-ai/claude-code && npx -y rea-agents@latest setup",
+  "postStartCommand": "nohup ollama serve > /tmp/ollama.log 2>&1 &",
+  "remoteEnv": {
+    "ANTHROPIC_BASE_URL": "http://localhost:11434",
+    "ANTHROPIC_AUTH_TOKEN": "ollama"
+  }
+}
